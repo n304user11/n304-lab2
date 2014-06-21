@@ -10,6 +10,20 @@ client.connect();
 
 app.get('/', function(req, res) {
     
+  query = client.query('SELECT * FROM events where eventid=1');
+  query.on('row', function(result) {
+    console.log(result);
+
+    if (!result) {
+      return res.send('No data found');
+    } else {
+      res.send('Event name: ' + result.eventname + "<br></br>" + 'date: ' + result.date);
+    }
+  });
+});
+
+app.get('/', function(req, res) {
+    
   query = client.query('SELECT * FROM events where eventid=2');
   query.on('row', function(result) {
     console.log(result);
