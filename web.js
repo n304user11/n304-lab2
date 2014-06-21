@@ -15,7 +15,7 @@ app.get('/', function(req, res) {
   var c = 'a,b,c';
   var d = 'test';
 
-  client.query('INSERT INTO events  (EventName) VALUES('abc')');
+  client.query('INSERT INTO events  (EventName) VALUES(\'abc\')');
   
   query = client.query('SELECT * FROM events');
   query.on('row', function(result) {
