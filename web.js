@@ -20,7 +20,9 @@ app.get('/', function(req, res) {
       reply = reply + 'Event name: ' + result.eventname + '\n';
     }
   });
-  res.send(reply);
+  query.on('end', function() {
+    res.send(reply);
+  }
 });
 
 app.listen(port, function() {
