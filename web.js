@@ -7,11 +7,6 @@ var express = require('express')
 
 client = new pg.Client(connectionString);
 client.connect();
-var app = express();
-
-app.use(express.bodyParser());
-
-app.use(app.router);
 
 app.get('/', function(req, res) {
   
@@ -20,7 +15,7 @@ app.get('/', function(req, res) {
   var c = 'a,b,c';
   var d = 'test';
 
-  client.query('INSERT INTO events (EventName) VALUES($1)', [a]);
+  client.query('INSERT INTO events  (EventName) VALUES('abc')');
   
   query = client.query('SELECT * FROM events');
   query.on('row', function(result) {
@@ -29,7 +24,7 @@ app.get('/', function(req, res) {
     if (!result) {
       return res.send('No data found');
     } else {
-      res.send('Event name: ' + result);
+      res.send('Event name: ' + result.EventName);
     }
   });
 });
