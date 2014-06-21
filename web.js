@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
     if (!result) {
       return res.send('No data found');
     } else {
-      res.send('Event name: ' + result.EventName);
+      res.send('Event name: ' + result.people);
 
     }
   });
