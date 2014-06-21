@@ -14,13 +14,14 @@ app.get('/', function(req, res) {
   var b = '01/01/2000';
   var c = 'a,b,c';
   var d = 'test';
-
+  alert('asdf1');
   client.query('INSERT INTO events  (EventName) VALUES(\'abc\')');
-  
+  alert('asdf2');
   query = client.query('SELECT * FROM events');
+  alert('asdf3');
   query.on('row', function(result) {
     console.log(result);
-
+alert('asdf4');
     if (!result) {
       return res.send('No data found');
     } else {
