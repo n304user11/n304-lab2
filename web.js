@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
   });
   query.on('end', function() {
     res.send(reply);
-  }
+  });
 });
 
 app.listen(port, function() {
