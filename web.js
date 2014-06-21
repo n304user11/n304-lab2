@@ -10,7 +10,7 @@ client.connect();
 
 app.get('/', function(req, res) {
     
-  query = client.query('SELECT * FROM events');
+  query = client.query('SELECT * FROM events where eventid=1');
   query.on('row', function(result) {
     console.log(result);
 
