@@ -1,22 +1,25 @@
 {
-  "name": "test",
-  "version": "0.0.1",
-  "description": "cool app",
+  "name": "test2",
+  "version": "0.0.0",
+  "description": "cool",
   "main": "web.js",
   "scripts": {
-    "test": " "
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/n304user11/test.git"
   },
   "keywords": [
-    "example",
-    "heroku"
+    "testing"
   ],
-  "author": "Sitao-Xie",
+  "author": "andy",
   "license": "ISC",
-  "homepage": "https://github.com/n304user11/test.git",
+  "bugs": {
+    "url": "https://github.com/n304user11/test/issues"
+  },
+  "homepage": "https://github.com/n304user11/test",
+
   "engines": {
     "node": "0.10.26"
   },
