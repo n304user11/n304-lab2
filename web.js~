@@ -8,7 +8,7 @@ var express = require('express')
 client = new pg.Client(connectionString);
 client.connect();
 
-app.get('/', function(req, res) {
+app.get('/home', function(req, res) {
   var reply = '';
   query = client.query('SELECT * FROM events');
   query.on('row', function(result) {
@@ -25,7 +25,7 @@ app.get('/', function(req, res) {
   });
 });
 
-app.post('/create', function(req, res) {
+app.post('/home/create', function(req, res) {
   
   if(typeof(req.body.ename = "undefined") || typeof(req.body.dscri = "undefined")){
 	 res.statusCode = 400;
