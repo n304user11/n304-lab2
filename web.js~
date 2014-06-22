@@ -5,7 +5,6 @@ var express = require('express')
   , port = process.env.PORT
   , client;
 
-var app = express();
 client = new pg.Client(connectionString);
 client.connect();
 
@@ -26,77 +25,24 @@ app.get('/', function(req, res) {
   });
 });
 
-app.configure(function () {
-  app.use(express.bodyParser());
-});
-
-var form = "<!DOCTYPE HTML><html><body>" +
-"<form method='post' action='/upload' enctype='multipart/form-data'>" +
-"<input type='file' name='image'/>" +
-"<input type='submit' /></form>" +
-"</body></html>";
-
-app.get('/up', function (req, res){
-	res.writeHead(200, {'Content-Type': 'text/html' });
-	res.end(form);
-
-});
-
-/// Include the node file module
-
-var fs = require('fs');
-
-/// Include ImageMagick
-
-var im = require('imagemagick');
-
-
-/// Post files
-
-app.post('/upload', function(req, res) {
-
-	fs.readFile(req.files.image.path, function (err, data) {
-
-		var imageName = req.files.image.name
-
-		/// If there's an error
-		if(!imageName){
-
-			console.log("There was an error")
-			res.redirect("/");
-			res.end();
-
-		} else {
-
-		  var newPath = __dirname + "/uploads/fullsize/" + imageName;
-
-		  /// write file to uploads/fullsize folder
-		  fs.writeFile(newPath, data, function (err) {
-
-		  	/// let's see it
-		  	res.redirect("/uploads/fullsize/" + imageName);
-
-		  });
-		}
-	});
-});
-
-
-/// Show files
-
-app.get('/uploads/fullsize/:file', function (req, res){
-	file = req.params.file;
-	var img = fs.readFileSync(__dirname + "/uploads/fullsize/" + file);
-	res.writeHead(200, {'Content-Type': 'image/jpg' });
-	res.end(img, 'binary');
-
-});
-
-app.get('/uploads/thumbs/:file', function (req, res){
-	file = req.params.file;
-	var img = fs.readFileSync(__dirname + "/uploads/thumbs/" + file);
-	res.writeHead(200, {'Content-Type': 'image/jpg' });
-	res.end(img, 'binary');
+app.post('/create', function(req, res) {
+  
+  if(typeof(req.body.ename = "undefined") || typeof(req.body.dscri = "undefined")){
+	 res.statusCode = 400;
+    return res.send('Error 400: Post syntax incorrect.');  
+  }
+  
+	var eventname = req.body.ename;
+	var descr = req.body.dscri;
+  
+  query = client.query('insert into events (eventname, description)values ($1, $2)', [eventname, descr]);
+  console.log("Added!");
+  function (err, result) {
+		done();
+		if(err) return res.send(err);
+		res.send('OK');
+  }
+  
 
 });
 
