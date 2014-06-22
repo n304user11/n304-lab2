@@ -5,6 +5,13 @@ var express = require('express')
   , port = process.env.PORT
   , client;
 
+var app = express();
+app.use(express.bodyParser());
+
+app.use(express.static(__dirname));
+
+app.use(app.router);
+
 client = new pg.Client(connectionString);
 client.connect();
 
