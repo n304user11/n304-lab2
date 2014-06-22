@@ -1,7 +1,22 @@
 {
-  "name": "Lab3",
+  "name": "test",
   "version": "0.0.1",
-  "description": "Lab demonstrating use of postgres on Heroku",
+  "description": "cool app",
+  "main": "web.js",
+  "scripts": {
+    "test": " "
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/n304user11/test.git"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "Sitao-Xie",
+  "license": "ISC",
+  "homepage": "https://github.com/n304user11/test.git",
   "engines": {
     "node": "0.10.26"
   },
