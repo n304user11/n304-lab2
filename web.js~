@@ -45,7 +45,7 @@ app.post('/create', function(req, res) {
   query = client.query('insert into events (eventname, description)values ($1, $2)', [eventname, descr]);
   console.log("Added!");
 
-		res.send('OK');
+	res.send('OK');
 
 });
 
